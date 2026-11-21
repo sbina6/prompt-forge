@@ -43,7 +43,7 @@ every case anyone thinks of. Version 1.0 grew that way.
 | Worked examples | `examples/` | Each declares its size, loop, delegation and review in its first line |
 | Checks | `tests/` | Standard library only; PyYAML is used if it is installed |
 | The zip builder | `tools/package_skill.py` | Writes `dist/prompt-forge-<version>.zip` |
-| Workflows | `.github/workflows/` | `validate` runs the checks on pull requests and on the main branch; `release` publishes a release when a version tag is pushed |
+| Workflows | `.github/workflows/` | `validate` runs the checks on pull requests and on the main branch; `release` publishes a release when it is started from the Actions tab or a version tag is pushed |
 | The previous version | `archive/v1.0/` | History. Do not edit. |
 
 ## Changing the skill
@@ -205,16 +205,14 @@ result. Evidence that is not written down is lost by the next build.
    ```
 
 4. Commit on a branch, open a pull request, and merge it once the checks are green.
-5. Tag the merged commit on the main branch and push the tag:
-
-   ```text
-   git tag -a v1.2 -m "Prompt Forge 1.2"
-   git push origin v1.2
-   ```
-
-   The release workflow does the rest. It confirms that the tag matches `VERSION`, runs the
-   checks, builds the zip from the tagged source and publishes a GitHub release, with that
+5. Publish the release. In the repository's **Actions** tab, open the **release** workflow and
+   press **Run workflow** on the main branch. It runs the checks, builds the zip from that source,
+   creates the tag `v<version>` from the `VERSION` file, and publishes a GitHub release with that
    version's changelog section as the notes and the zip attached.
+
+   Two other routes start the same workflow. Pushing a tag such as `v1.2` from your own computer
+   works. So does publishing a release for that tag in the GitHub interface, in which case the
+   workflow attaches the zip to the release you made.
 6. Install the new version: upload the zip as described in [INSTALL.md](INSTALL.md), or ask Claude
    in a chat to update the skill from the repository's `SKILL.md`.
 7. Run the check ask from [INSTALL.md](INSTALL.md#4-check-that-it-works) to confirm that the new
@@ -245,3 +243,8 @@ If you are a Claude session asked to upgrade, fix or extend this skill:
   the same version number.
 - **Leave personal details out.** Describe real uses in general terms, as
   [DESIGN.md](DESIGN.md#32-evidence-from-real-use) does.
+- **Know what a cloud session can do here.** In November 2026 a Claude session running in the
+  cloud could push branches, open pull requests through the REST interface, and merge them with
+  the owner's agreement. It could not create the repository, push tags, publish a release, or
+  change repository settings such as the description. Leave those steps to the owner and say so
+  plainly. Do not look for another route around a refusal.
