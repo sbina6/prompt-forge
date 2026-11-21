@@ -154,7 +154,8 @@ session behaves.
 ## Step 6: Mechanical checks
 
 Scripts were written to check what can be checked without judgment. They are in
-[`tests/`](../tests) and run on every push.
+[`tests/`](../tests), and a workflow runs them on every pull request and on every push to the main
+branch.
 
 | Check | What it guards |
 |---|---|
