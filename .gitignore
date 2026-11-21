@@ -1,0 +1,12 @@
+# Build output: the installable zip is attached to each GitHub release
+dist/
+
+# Python
+__pycache__/
+*.pyc
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
