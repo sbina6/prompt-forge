@@ -15,6 +15,8 @@ rough idea into a right-sized prompt for an autonomous agent.
 
 - `python tests/run_checks.py` runs every check. Run it before each commit.
 - `python tools/package_skill.py` builds `dist/prompt-forge-<version>.zip`.
+- Pushing a tag such as `v1.2` publishes a release through `.github/workflows/release.yml`. Tag
+  only after the pull request is merged and the owner has agreed to release.
 
 ## When you change the skill
 

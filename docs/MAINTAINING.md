@@ -43,6 +43,7 @@ every case anyone thinks of. Version 1.0 grew that way.
 | Worked examples | `examples/` | Each declares its size, loop, delegation and review in its first line |
 | Checks | `tests/` | Standard library only; PyYAML is used if it is installed |
 | The zip builder | `tools/package_skill.py` | Writes `dist/prompt-forge-<version>.zip` |
+| Workflows | `.github/workflows/` | `validate` runs the checks on pull requests and on the main branch; `release` publishes a release when a version tag is pushed |
 | The previous version | `archive/v1.0/` | History. Do not edit. |
 
 ## Changing the skill
@@ -204,8 +205,16 @@ result. Evidence that is not written down is lost by the next build.
    ```
 
 4. Commit on a branch, open a pull request, and merge it once the checks are green.
-5. Tag the merge commit `v<version>` and create a GitHub release with the zip attached. Use the
-   changelog section as the release notes.
+5. Tag the merged commit on the main branch and push the tag:
+
+   ```text
+   git tag -a v1.2 -m "Prompt Forge 1.2"
+   git push origin v1.2
+   ```
+
+   The release workflow does the rest. It confirms that the tag matches `VERSION`, runs the
+   checks, builds the zip from the tagged source and publishes a GitHub release, with that
+   version's changelog section as the notes and the zip attached.
 6. Install the new version: upload the zip as described in [INSTALL.md](INSTALL.md), or ask Claude
    in a chat to update the skill from the repository's `SKILL.md`.
 7. Run the check ask from [INSTALL.md](INSTALL.md#4-check-that-it-works) to confirm that the new

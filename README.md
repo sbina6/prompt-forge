@@ -114,7 +114,8 @@ each, including one request run through both version 1.0 and version 1.1.
 | [`docs/SOURCES.md`](docs/SOURCES.md) | The documentation the design relies on, with the date each page was checked |
 | [`examples/`](examples/README.md) | Four asks with the full prompts and the reasoning |
 | [`tests/`](tests) | Checks for the skill file, the examples and the links |
-| [`tools/`](tools) | The script that builds the installable zip |
+| [`tools/`](tools) | The scripts that build the installable zip and the release notes |
+| [`.github/`](.github) | Workflows that run the checks and publish releases, and the issue and pull request templates |
 | [`archive/v1.0/`](archive/v1.0/README.md) | The previous version, kept for comparison |
 | [`CHANGELOG.md`](CHANGELOG.md) | What changed in each version |
 | [`CLAUDE.md`](CLAUDE.md) | Short working notes for Claude sessions in this repository |

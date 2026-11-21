@@ -31,7 +31,7 @@ should be the smallest one that still gets the result proven.
   secrets stay out of the prompt.
 - **A version stamp** in the skill file.
 - **This repository:** usage guide, design notes, build history, maintenance guide, examples,
-  checks, a continuous-integration workflow and a zip builder.
+  checks, a zip builder, and workflows that run the checks and publish each release.
 
 ### Changed
 

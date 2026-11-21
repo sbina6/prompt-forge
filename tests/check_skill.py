@@ -50,6 +50,9 @@ def main() -> int:
     changelog_path = sm.REPO / "CHANGELOG.md"
     changelog = changelog_path.read_text(encoding="utf-8") if changelog_path.exists() else ""
     report("CHANGELOG has an entry for this version", f"## [{version}]" in changelog)
+    import release_notes  # in tools/, next to skill_meta
+
+    report("release notes can be extracted for this version", bool(release_notes.notes(version)))
     stale = re.findall(r"\bv2\b|\bversion 2\b|prompt-forge-v2", text, re.I)
     report("no leftover 'v2' labels", not stale, str(stale) if stale else "")
 

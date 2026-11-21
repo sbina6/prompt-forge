@@ -190,6 +190,10 @@ request, because the repository already had a first commit on its main branch.
 The release was renumbered from the working label to 1.1 at the owner's request
 ([D20](DESIGN.md#d20-the-version-number)). Version 1.0 was archived unchanged.
 
+Two workflows were added. One runs the checks on every pull request and on the main branch. The
+other publishes a release when a version tag is pushed, building the zip from the tagged source so
+that the download always matches the tag.
+
 ## What was not done
 
 - **No independent evaluation.** The standard method for testing a skill is to run a set of asks

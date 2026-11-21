@@ -1,0 +1,37 @@
+name: release
+
+# Publishes a GitHub release when a version tag such as v1.1 is pushed.
+# The zip is built from the tagged source, so it always matches the tag.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Install PyYAML
+        run: python -m pip install pyyaml
+      - name: Check that the tag matches the VERSION file
+        run: test "${GITHUB_REF_NAME}" = "v$(cat VERSION)"
+      - name: Run the checks
+        run: python tests/run_checks.py
+      - name: Build the installable zip
+        run: python tools/package_skill.py
+      - name: Write the release notes from the changelog
+        run: python tools/release_notes.py > release-notes.md
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >
+          gh release create "${GITHUB_REF_NAME}" dist/*.zip
+          --title "Prompt Forge $(cat VERSION)"
+          --notes-file release-notes.md
