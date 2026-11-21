@@ -191,8 +191,12 @@ The release was renumbered from the working label to 1.1 at the owner's request
 ([D20](DESIGN.md#d20-the-version-number)). Version 1.0 was archived unchanged.
 
 Two workflows were added. One runs the checks on every pull request and on the main branch. The
-other publishes a release when a version tag is pushed, building the zip from the tagged source so
-that the download always matches the tag.
+other publishes a release, building the zip from the source being released so that the download
+always matches the tag. It is started from the Actions tab or by a version tag.
+
+The session was allowed to push branches and to merge the pull request once the owner agreed. It
+was not allowed to push tags or to change repository settings, so publishing the release and
+setting the repository description were left to the owner.
 
 ## What was not done
 

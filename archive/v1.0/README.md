@@ -7,6 +7,10 @@ version 1.0 can be used as the baseline when the skill is evaluated.
 
 **Do not install this version, and do not edit these files.**
 
+The git history holds the same files at their original location. The commit "Add Prompt Forge 1.0
+as it was installed" put them in `skill/prompt-forge/`, and the next commit replaced them, so
+`git log -p -- skill/prompt-forge/SKILL.md` shows exactly what version 1.1 changed.
+
 | File | What it was |
 |---|---|
 | `SKILL.md` | The skill: three moves (Understand, Forge, Deliver) and a four-part spine in every prompt |
